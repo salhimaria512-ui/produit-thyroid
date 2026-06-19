@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>شعارنا الشفاء بإذن الله</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Tajawal',sans-serif;
+}
+
+body{
+background:#eceee8;
+}
+
+.top-bar{
+background:#d4e78d;
+padding:18px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+color:#333;
+}
+
+.container{
+max-width:800px;
+margin:40px auto;
+background:white;
+padding:40px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,.1);
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+font-size:34px;
+}
+
+.product-box{
+text-align:center;
+margin-bottom:30px;
+}
+
+.product-box img{
+width:280px;
+border-radius:12px;
+}
+
+.product-name{
+font-size:28px;
+font-weight:bold;
+margin-top:15px;
+}
+
+.price{
+color:#1e7e34;
+font-size:32px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.form-group{
+margin-bottom:20px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-size:22px;
+font-weight:bold;
+}
+
+input,
+select{
+width:100%;
+padding:16px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:20px;
+}
+
+.summary{
+background:#f8f8f8;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
+.summary p{
+font-size:22px;
+margin:10px 0;
+}
+
+.total{
+font-size:30px;
+font-weight:bold;
+color:red;
+}
+
+button{
+width:100%;
+padding:18px;
+background:red;
+border:none;
+border-radius:8px;
+color:white;
+font-size:26px;
+font-weight:bold;
+cursor:pointer;
+margin-top:25px;
+transition:.3s;
+}
+
+button:hover{
+background:#cc0000;
+}
+
+@media(max-width:768px){
+
+.container{
+margin:15px;
+padding:20px;
+}
+
+h1{
+font-size:26px;
+}
+
+label{
+font-size:18px;
+}
+
+input,
+select{
+font-size:16px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+شعارنا الشفاء بإذن الله
+</div>
+
+<div class="container">
+
+<h1>اختر العرض المثالي لك واملأ بياناتك أدناه</h1>
+
+<div class="product-box">
+
+<img src="product.jpg" alt="Produit">
+
+<div class="product-name">
+اسم المنتج
+</div>
+
+<div class="price">
+4500 دج
+</div>
+
+</div>
+
+<form>
+
+<div class="form-group">
+<label>رقم الهاتف *</label>
+<input type="tel" placeholder="رقم الهاتف">
+</div>
+
+<div class="form-group">
+<label>الاسم و اللقب *</label>
+<input type="text" placeholder="الاسم و اللقب">
+</div>
+
+<div class="form-group">
+<label>الكمية *</label>
+
+<select id="quantity">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+
+</div>
+
+<div class="form-group">
+<label>الولاية *</label>
+
+<select id="wilaya">
+
+<option value="600">الجزائر</option>
+<option value="700">البليدة</option>
+<option value="750">تيبازة</option>
+<option value="800">وهران</option>
+<option value="850">قسنطينة</option>
+<option value="1000">ورقلة</option>
+<option value="1200">تمنراست</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+<label>البلدية *</label>
+
+<select>
+<option>اختر البلدية</option>
+<option>بلدية 1</option>
+<option>بلدية 2</option>
+<option>بلدية 3</option>
+</select>
+
+</div>
+
+<div class="summary">
+
+<p>
+سعر المنتج:
+<span id="productPrice">4500</span> دج
+</p>
+
+<p>
+سعر التوصيل:
+<span id="shippingPrice">600</span> دج
+</p>
+
+<p>
+الكمية:
+<span id="qtyDisplay">1</span>
+</p>
+
+<p class="total">
+المجموع:
+<span id="totalPrice">5100</span> دج
+</p>
+
+</div>
+
+<button type="submit">
+أرسل طلبك الآن
+</button>
+
+</form>
+
+</div>
+
+<script>
+
+const productPrice = 4500;
+
+const quantity = document.getElementById("quantity");
+const wilaya = document.getElementById("wilaya");
+
+function calculateTotal(){
+
+const qty = parseInt(quantity.value);
+
+const shipping = parseInt(wilaya.value);
+
+const total =
+(productPrice * qty) + shipping;
+
+document.getElementById("shippingPrice").innerText = shipping;
+
+document.getElementById("qtyDisplay").innerText = qty;
+
+document.getElementById("totalPrice").innerText = total;
+
+}
+
+quantity.addEventListener("change", calculateTotal);
+
+wilaya.addEventListener("change", calculateTotal);
+
+calculateTotal();
+
+</script>
+
+</body>
+</html>
